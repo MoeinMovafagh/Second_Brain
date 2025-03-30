@@ -68,3 +68,14 @@ async def telegram_webhook(update: TelegramUpdate):
             if event_data["intent"] == "create":
                 # Create event in Google Calendar
                 s= 10
+
+            return {"status": "ok"}
+        
+
+    except Exception as e:
+        await send_telegram_message(
+            chat_id,
+            "I apologize, but I'm having trouble processing your message right now. Please try again later."
+        )
+        logger.error(f"======>Error processing message: {e}")
+        raise HTTPException(status_code=500, detail=str(e))        
