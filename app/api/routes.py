@@ -60,17 +60,21 @@ async def telegram_webhook(update: TelegramUpdate):
     
     
     try:
-        event_data = await nlp_agent.extract_intent(user_message, history)
+        intent = await nlp_agent.extract_intent(user_message, history)
         # logger.info(f"===========> Event data: {event_data}")
 
         # If no confirmation is needed, proceed with the action
-        if event_data["confirmation_needed"] is False:
-            if event_data["intent"] == "create":
-                # Create event in Google Calendar
-                s= 10
+        if intent["confirmation_needed"] is False:
 
-            return {"status": "ok"}
+
+            return {"status": "False"}
         
+        else:
+            await send_telegram_message(
+                chat_id,
+                intent["intent"],
+)  
+            return {"status": "True"}
 
     except Exception as e:
         await send_telegram_message(
