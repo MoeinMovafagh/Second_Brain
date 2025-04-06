@@ -20,7 +20,7 @@ A Telegram bot that helps you manage your personal knowledge using natural langu
 
 1. Clone the repository:
 ```bash
-git clone [your-repository-url]
+git clone https://github.com/MoeinMovafagh/Second_Brain
 cd Second_Brain
 ```
 
